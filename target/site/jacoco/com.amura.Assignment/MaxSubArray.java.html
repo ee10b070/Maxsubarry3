@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MaxSubArray.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment</a> &gt; <a href="index.source.html" class="el_package">com.amura.Assignment</a> &gt; <span class="el_source">MaxSubArray.java</span></div><h1>MaxSubArray.java</h1><pre class="source lang-java linenums">package com.amura.Assignment;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import com.amura.Assignment.model.Response;
+
+/**
+ * 
+ * Class to find maximum sum of the sub array from given array.
+ * 
+ * @author ravinder_k
+ *
+ */
+<span class="nc" id="L14">public class MaxSubArray {</span>
+
+    // private static final Logger LOGGER = LoggerFactory.getLogger(MaxSubArray.class);
+
+    /**
+     * 
+     * Method to find max sub array.
+     * 
+     * @param input
+     */
+    static Response findMaxSubArray(String[] input) {
+        // LOGGER.info(&quot;Start of the &quot; + LOGGER.getName());
+<span class="fc" id="L26">        System.out.println(&quot;Started the findMaxSubArray()&quot;);</span>
+<span class="fc" id="L27">        int len = input.length;</span>
+<span class="fc" id="L28">        int tempMax = 0;</span>
+<span class="fc" id="L29">        int max = 0;</span>
+<span class="fc" id="L30">        int startIndex = 0;</span>
+<span class="fc" id="L31">        int lastIndex = 0;</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        for (int i = 0; i &lt; len; i++) {</span>
+<span class="fc" id="L33">            tempMax = tempMax + Integer.parseInt(input[i]);</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">            if (tempMax &lt; 0) {</span>
+<span class="fc" id="L35">                tempMax = 0;</span>
+<span class="fc" id="L36">                startIndex = i;</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">            } else if (tempMax &gt; max) {</span>
+<span class="fc" id="L38">                max = tempMax;</span>
+<span class="fc" id="L39">                lastIndex = i;</span>
+            }
+        }
+<span class="fc" id="L42">        System.out.println(&quot;Start Index :&quot; + (startIndex + 1));</span>
+<span class="fc" id="L43">        System.out.println(&quot;Last Index: &quot; + lastIndex);</span>
+<span class="fc" id="L44">        System.out.println(&quot;Length :&quot; + (lastIndex - startIndex));</span>
+<span class="fc" id="L45">        System.out.println(&quot;Sum :&quot; + max);</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">        for (int j = startIndex + 1; j &lt;= lastIndex; j++) {</span>
+<span class="fc" id="L47">            System.out.print(input[j] + &quot; &quot;);</span>
+        }
+<span class="fc" id="L49">        System.out.println(&quot;\n&quot;);</span>
+<span class="fc" id="L50">        System.out.println(&quot;Completted findMaxSubArray()&quot;);</span>
+        
+<span class="fc" id="L52">        return new Response(startIndex+1,lastIndex,(lastIndex - startIndex),max);</span>
+
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
